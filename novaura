@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Novaura – Hakkımızda</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+      color: #333;
+    }
+    header {
+      background-color: #111;
+      color: #fff;
+      padding: 30px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+      letter-spacing: 1px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #f27405;
+      margin-top: 20px;
+    }
+    a {
+      color: #f27405;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .cta {
+      margin-top: 30px;
+      padding: 15px;
+      background-color: #f27405;
+      color: white;
+      text-align: center;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .cta:hover {
+      background-color: #db6000;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Novaura Teknoloji</h1>
+    <p>Geleceğin Uygulamalarını Şekillendiriyoruz</p>
+  </header>
+
+  <div class="container">
+    <h2>Hakkımızda</h2>
+    <p><strong>Novaura</strong>, modern mobil teknolojiye odaklanan bağımsız bir yazılım geliştirici markasıdır. 
+    Amacımız, kullanıcıların günlük yaşamlarını kolaylaştıracak yenilikçi, sade ve güçlü uygulamalar geliştirmektir.</p>
+
+    <p>Novaura çatısı altında yayınlanan tüm uygulamalar, yüksek performans, kullanıcı gizliliği ve yalın tasarım prensipleri ile geliştirilir. Kullanıcı deneyimi her zaman önceliğimizdir.</p>
+
+    <h2>Uygulamalarımız</h2>
+    <p>Novaura’nın geliştirdiği bazı popüler uygulamalar şunlardır:</p>
+    <ul>
+      <li><strong>Viteska</strong> – Türkiye’nin ilk araç yaşam platformu (bakım takibi, yakıt giderleri, karşılaştırma vb.)</li>
+      <li><strong>Cinéx</strong> – Film/dizi keşif platformu, IMDb + fragmanlı içerikler</li>
+    </ul>
+
+    <h2>Google Play Üzerinden Bizi Takip Et</h2>
+    <p>Tüm uygulamalarımız Google Play üzerinde <strong>Novaura</strong> geliştirici hesabı altında yayınlanmaktadır.</p>
+    <div class="cta">
+      <a href="https://play.google.com/store/apps/dev?id=YOUR_NOVAURA_DEV_ID" target="_blank">Novaura'yı Google Play'de Görüntüle</a>
+    </div>
+
+    <h2>İletişim</h2>
+    <p>Bizimle iletişime geçmek, öneride bulunmak ya da destek almak isterseniz, lütfen <a href="mailto:destek@novaura.com">destek@novaura.com</a> adresine mail atın.</p>
+
+    <p>Novaura ile tanıştığınız için teşekkür ederiz. Her gün daha iyisini yapmak için çalışıyoruz.</p>
+  </div>
+
+</body>
+</html>
