@@ -1,96 +1,260 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Novaura – Hakkımızda</title>
-  <style>
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
-      line-height: 1.8;
-      color: #333;
-    }
-    header {
-      background-color: #111;
-      color: #fff;
-      padding: 30px 20px;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 32px;
-      letter-spacing: 1px;
-    }
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      background: #fff;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-    }
-    h2 {
-      color: #f27405;
-      margin-top: 20px;
-    }
-    a {
-      color: #f27405;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .cta {
-      margin-top: 30px;
-      padding: 15px;
-      background-color: #f27405;
-      color: white;
-      text-align: center;
-      border-radius: 8px;
-      font-weight: bold;
-      font-size: 18px;
-    }
-    .cta:hover {
-      background-color: #db6000;
-      cursor: pointer;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Viteska – Uygulamayı İndir</title>
+<meta name="description" content="Viteska: Yakındaki otopark, lastikçi, yıkama, akaryakıt, servis ve otomotiv bayilerini anında bulun. Android APK indir, iOS için Web App.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/logo.png">
+<meta name="theme-color" content="#ffffff">
+
+<!-- iOS standalone -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Viteska">
+<link rel="apple-touch-icon" href="assets/logo.png">
+
+<style>
+  :root{
+    --primary:#f27405;  /* turuncu */
+    --green:#24c257;
+    --blue:#3483fa;
+    --text:#121417;
+    --muted:#6b7280;
+    --line:#e5e7eb;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#fff;color:var(--text)}
+
+  /* container */
+  .wrap{max-width:1120px;margin:0 auto;padding:24px 16px 64px}
+
+  /* header */
+  .top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 0;border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img{width:36px;height:36px;border-radius:8px;object-fit:contain}
+  .brand b{font-size:20px;letter-spacing:.2px}
+  .ver{font-weight:700;color:#374151;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 12px}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;margin-top:22px}
+  .h-title{font-size:34px;line-height:1.12;margin:10px 0 6px}
+  .h-title .hl{color:var(--primary)}
+  .muted{color:var(--muted)}
+  .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+  .btn{appearance:none;border:none;border-radius:12px;padding:14px 18px;font-weight:800;font-size:16px;cursor:pointer}
+  .btn-primary{background:var(--primary);color:#fff}
+  .btn-outline{background:#fff;color:#111;border:2px solid var(--line)}
+  .hero img{width:100%;height:auto;border-radius:16px;border:1px solid var(--line);background:#fff}
+
+  /* feature cards */
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+  .card img{width:100%;height:160px;object-fit:cover;border-radius:12px;margin-bottom:10px;background:#f8fafc}
+  .card h3{margin:4px 0 6px}
+  .tag{display:inline-block;font-weight:700;border-radius:999px;padding:6px 10px;border:1px solid var(--line);color:#111;background:#fff;margin-bottom:8px}
+
+  /* screenshots */
+  .screens{margin-top:34px}
+  .screens h2{margin:0 0 12px}
+  .grid-ss{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .ss{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+  .ss img{width:100%;height:100%;object-fit:cover;display:block}
+  .note{margin-top:8px;color:var(--muted);font-size:14px}
+
+  /* info blocks */
+  .info{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+  .info .box{border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff}
+  .info h3{margin:4px 0 6px}
+  .steps{margin:8px 0 0 18px;color:#111}
+  .steps li{margin:6px 0}
+
+  /* footer */
+  .footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);color:#6b7280;font-size:13px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+
+  /* responsive */
+  @media (max-width:980px){ .hero{grid-template-columns:1fr} .features{grid-template-columns:1fr 1fr} .info{grid-template-columns:1fr} }
+  @media (max-width:640px){ .features{grid-template-columns:1fr} .grid-ss{grid-template-columns:1fr 1fr} }
+</style>
 </head>
 <body>
+<div class="wrap">
 
-  <header>
-    <h1>Novaura Teknoloji</h1>
-    <p>Geleceğin Uygulamalarını Şekillendiriyoruz</p>
+  <!-- Header -->
+  <header class="top">
+    <div class="brand">
+      <!-- logo görseli -->
+      <img src="https://pbs.twimg.com/media/GtdpnsJWMAAicbp?format=jpg&name=medium" alt="Viteska Logo">
+      <b>Viteska</b>
+    </div>
+    <div class="ver" id="versionBadge">Sürüm: v2.0</div>
   </header>
 
-  <div class="container">
-    <h2>Hakkımızda</h2>
-    <p><strong>Novaura</strong>, modern mobil teknolojiye odaklanan bağımsız bir yazılım geliştirici markasıdır. 
-    Amacımız, kullanıcıların günlük yaşamlarını kolaylaştıracak yenilikçi, sade ve güçlü uygulamalar geliştirmektir.</p>
-
-    <p>Novaura çatısı altında yayınlanan tüm uygulamalar, yüksek performans, kullanıcı gizliliği ve yalın tasarım prensipleri ile geliştirilir. Kullanıcı deneyimi her zaman önceliğimizdir.</p>
-
-    <h2>Uygulamalarımız</h2>
-    <p>Novaura’nın geliştirdiği bazı popüler uygulamalar şunlardır:</p>
-    <ul>
-      <li><strong>Viteska</strong> – Türkiye’nin ilk araç yaşam platformu (bakım takibi, yakıt giderleri, karşılaştırma vb.)</li>
-      <li><strong>Cinéx</strong> – Film/dizi keşif platformu, IMDb + fragmanlı içerikler</li>
-    </ul>
-
-    <h2>Google Play Üzerinden Bizi Takip Et</h2>
-    <p>Tüm uygulamalarımız Google Play üzerinde <strong>Novaura</strong> geliştirici hesabı altında yayınlanmaktadır.</p>
-    <div class="cta">
-      <a href="https://play.google.com/store/apps/dev?id=YOUR_NOVAURA_DEV_ID" target="_blank">Novaura'yı Google Play'de Görüntüle</a>
+  <!-- Hero -->
+  <section class="hero">
+    <div>
+      <h1 class="h-title">Yakındaki <span class="hl">oto hizmetleri</span> için Viteska</h1>
+      <p class="muted">Otopark, lastikçi, yıkama, akaryakıt, araç servisleri ve otomotiv bayileri. Haritada görün, rotayı başlatın veya tek dokunuşla arayın.</p>
+      <div class="row" id="ctaRow">
+        <!-- JS platforma göre doldurur -->
+      </div>
+      <p class="muted" id="platformNote" style="margin-top:6px"></p>
     </div>
+    <div>
+      <!-- Kapak görseli -->
+      <img src="assets/hero.png" alt="Viteska Uygulaması Önizleme">
+    </div>
+  </section>
 
-    <h2>İletişim</h2>
-    <p>Bizimle iletişime geçmek, öneride bulunmak ya da destek almak isterseniz, lütfen <a href="mailto:destek@novaura.com">destek@novaura.com</a> adresine mail atın.</p>
+  <!-- Özellikler (görselli) -->
+  <section class="features">
+    <article class="card">
+      <span class="tag" style="border-color:#fce7d4;background:#fff5eb;color:#7a3a04">Hızlı Başlangıç</span>
+      <img src="assets/feature-1.jpg" alt="Hızlı açılış">
+      <h3>Hafif ve hızlı</h3>
+      <p class="muted">Tek sayfa mimarisi, düşük veri kullanımı ve hızlı açılış süreleri.</p>
+    </article>
+    <article class="card">
+      <span class="tag" style="border-color:#d8f5e5;background:#f3fff8;color:#0b5a2b">Rota ve Arama</span>
+      <img src="assets/feature-2.jpg" alt="Harita ve rota">
+      <h3>Harita ile yönlendirme</h3>
+      <p class="muted">Google Haritalar üzerinden anında yol tarifi ve işletmeyle iletişim.</p>
+    </article>
+    <article class="card">
+      <span class="tag" style="border-color:#dbe7ff;background:#f3f7ff;color:#0b3f9a">Web App Desteği</span>
+      <img src="assets/feature-3.jpg" alt="Web App">
+      <h3>iOS için Web App</h3>
+      <p class="muted">Safari’den Ana Ekrana Ekle ile tam ekran web uygulaması olarak çalışır.</p>
+    </article>
+  </section>
 
-    <p>Novaura ile tanıştığınız için teşekkür ederiz. Her gün daha iyisini yapmak için çalışıyoruz.</p>
-  </div>
+  <!-- Ekran Görüntüleri -->
+  <section class="screens">
+    <h2>Ekran Görüntüleri</h2>
+    <div class="grid-ss">
+      <div class="ss"><img src="screenshots/screen-1.jpg" alt="Ekran 1"></div>
+      <div class="ss"><img src="screenshots/screen-2.jpg" alt="Ekran 2"></div>
+      <div class="ss"><img src="screenshots/screen-3.jpg" alt="Ekran 3"></div>
+      <div class="ss"><img src="screenshots/screen-4.jpg" alt="Ekran 4"></div>
+      <div class="ss"><img src="screenshots/screen-5.jpg" alt="Ekran 5"></div>
+      <div class="ss"><img src="screenshots/screen-6.jpg" alt="Ekran 6"></div>
+    </div>
+    <div class="note">Görseller örnektir. Kendi ekran görüntülerinizi <code>/screenshots/</code> klasörüne ekleyin ve adlarını koruyun ya da bu yolları güncelleyin.</div>
+  </section>
 
+  <!-- Yükleme bilgileri -->
+  <section class="info">
+    <div class="box">
+      <h3>Android yükleme</h3>
+      <ol class="steps">
+        <li>APK dosyasını indirin ve açın.</li>
+        <li>Gerekirse Ayarlar → Güvenlik bölümünde “Bilinmeyen kaynaklar” iznini etkinleştirin.</li>
+        <li>Kurulum tamamlandıktan sonra Viteska’yı açın.</li>
+      </ol>
+      <div class="row" style="margin-top:12px">
+        <a id="apkBtn" class="btn btn-primary" href="#" download>Android APK indir</a>
+        <a id="changelogBtn" class="btn btn-outline" href="#changelog">Sürüm Notları</a>
+      </div>
+    </div>
+    <div class="box">
+      <h3>iOS’ta web uygulaması</h3>
+      <ol class="steps">
+        <li>Safari ile bu sayfayı açın.</li>
+        <li>Paylaş menüsünden “Ana Ekrana Ekle”yi seçin.</li>
+        <li>İsmi “Viteska” olarak kaydedin.</li>
+      </ol>
+      <div class="row" style="margin-top:12px">
+        <button id="pwaBtn" class="btn btn-outline">Web Uygulaması Olarak Yükle</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sürüm notları -->
+  <section id="changelog" class="card" style="margin-top:28px">
+    <h3 style="margin:8px 0 6px">Sürüm Notları</h3>
+    <div id="notes" class="muted">
+      <ul>
+        <li>İlk yayın: Otopark, Lastikçi, Yıkama, Akaryakıt, Servis ve Bayi sayfaları</li>
+        <li>Rota, yer detayları ve telefonla arama</li>
+        <li>iOS için Web App desteği</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div>© <span id="year"></span> Viteska</div>
+    <div class="muted">Gizlilik • Kullanım Koşulları</div>
+  </footer>
+
+</div>
+
+<script>
+  // ——— Ayarlar ———
+  const APK_URL   = "https://ayazqaan.github.io/harita/viteska.apk";  // APK linkini güncelle
+  const APP_VER   = "1.0.0";
+
+  // Versiyon etiketi
+  document.getElementById("versionBadge").textContent = "Sürüm: v" + APP_VER;
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Platform tespiti ve akıllı CTA
+  const ua = navigator.userAgent.toLowerCase();
+  const isAndroid = ua.includes("android");
+  const isIOS = /iphone|ipad|ipod/.test(ua);
+
+  const ctaRow = document.getElementById("ctaRow");
+  const platformNote = document.getElementById("platformNote");
+
+  function cta(btnText, href, classes="btn btn-primary"){
+    const a = document.createElement(href ? "a" : "button");
+    a.className = classes;
+    a.textContent = btnText;
+    if(href){ a.href = href; a.download = href.endsWith(".apk"); }
+    return a;
+  }
+
+  // Hero CTA’ları
+  if(isAndroid){
+    ctaRow.append(cta("Android APK indir", APK_URL, "btn btn-primary"));
+    ctaRow.append(cta("Web Uygulaması Olarak Yükle", null, "btn btn-outline"));
+    platformNote.textContent = "Android algılandı. APK’yı indirebilir veya PWA olarak yükleyebilirsiniz.";
+  } else if(isIOS){
+    ctaRow.append(cta("Ana Ekrana Ekle (iOS)", null, "btn btn-primary"));
+    platformNote.textContent = "iOS algılandı. Safari’de Paylaş → Ana Ekrana Ekle ile yükleyin.";
+  } else {
+    ctaRow.append(cta("Web Uygulamasını Yükle", null, "btn btn-primary"));
+    platformNote.textContent = "Masaüstü algılandı. Web uygulamasını yükleyebilir veya APK’yı başka cihaza indirebilirsiniz.";
+  }
+
+  // Android bölümündeki butonu bağla
+  document.getElementById("apkBtn").href = APK_URL;
+
+  // PWA yükleme akışı (emblemsiz, metin odaklı)
+  let deferredPrompt = null;
+  window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+  });
+
+  function requestPWA(){
+    if(deferredPrompt){
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.finally(()=> deferredPrompt=null);
+    } else {
+      alert("Web uygulaması yükleme isteği hazır değil. iOS için Safari’den Ana Ekrana Ekle seçeneğini kullanabilirsiniz.");
+    }
+  }
+
+  const pwaBtns = [document.getElementById("pwaBtn"), ...document.querySelectorAll("#ctaRow .btn.btn-outline")];
+  pwaBtns.forEach(btn => btn && btn.addEventListener("click", requestPWA));
+
+  // Service Worker kaydı (manifest ile birlikte PWA için)
+  if("serviceWorker" in navigator){
+    navigator.serviceWorker.register("./sw.js").catch(()=>{});
+  }
+</script>
 </body>
 </html>
