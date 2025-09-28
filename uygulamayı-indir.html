@@ -41,6 +41,21 @@
   .store-badges img{height:56px;width:auto;display:block}
   @media (max-width:520px){ .store-badges img{height:48px} }
 
+  /* geniş web butonu */
+  .wide-cta{margin-top:10px}
+  .wide-cta a{
+    display:block; width:100%;
+    background:#fff; color:var(--primary);
+    border:2px solid var(--primary);
+    border-radius:14px;
+    padding:14px 20px;
+    text-align:center; font-weight:800; font-size:18px;
+    box-shadow:0 2px 8px rgba(242,116,5,.08);
+    transition:transform .06s ease, box-shadow .12s ease;
+    text-decoration:none;
+  }
+  .wide-cta a:active{ transform:translateY(1px); box-shadow:0 1px 5px rgba(242,116,5,.12); }
+
   /* screenshot gallery */
   .screens{margin-top:34px}
   .screens h2{margin:0 0 12px}
@@ -55,7 +70,7 @@
   .steps{margin:8px 0 0 18px}
   .steps li{margin:6px 0}
 
-  /* features (görsel odaklı) */
+  /* features */
   .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
   .card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
   .card img{width:100%;height:180px;object-fit:cover;display:block}
@@ -77,7 +92,7 @@
       <img src="https://pbs.twimg.com/media/GtdpnsJWMAAicbp?format=jpg&name=medium" alt="Viteska Logo">
       <b id="brandTitle">Viteska</b>
     </div>
-    <div class="ver" id="versionBadge">Sürüm: v2.0.0</div>
+    <div class="ver" id="versionBadge">Sürüm: 2.0</div>
   </header>
 
   <!-- Hero -->
@@ -89,24 +104,26 @@
         Bakım takibi, masraf yönetimi, sigorta hatırlatmaları ve ilan sistemi gibi özellikleriyle aracınızı yönetmeyi kolaylaştırır, size zaman kazandırır.
       </p>
 
-      <!-- ✅ Görsel rozetler (yan yana) -->
       <div class="store-badges" id="badgesRow">
         <a id="playBadge" href="#" target="_blank" rel="noopener" aria-label="Google Play'den indir">
-          <img src="https://cihanbuyukakkas.com/wp-content/uploads/2021/04/Google-Play-hemen-indir-button-logo-icon-transparan-PNG-gorseli_5.png" alt="Google Play'den indir">
+          <img src="https://cihanbuyukakkas.com/wp-content/uploads/2021/04/Google-Play-hemen-indir-button-logo-icon-transparan-PNG-gorseli_3.png" alt="">
         </a>
         <a id="pwaBadge" href="#" aria-label="iOS Web App olarak yükle">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTCBypzSyTbXc7ZQJY-z5pX0jWk6C6OEW5Ew&s" alt="iOS Web App - Ana Ekrana Ekle">
+          <img src="https://cihanbuyukakkas.com/wp-content/uploads/2021/04/App-Store-hemen-indir-button-logo-icon-transparan-PNG-gorseli_3.png" alt="">
         </a>
       </div>
 
-      <p class="muted" id="platformNote" style="margin-top:6px"></p>
+      <div class="wide-cta">
+        <a id="webBtn" href="#" target="_blank" rel="noopener" aria-label="Viteska Web sürümünü aç">Web Sürümünü Aç</a>
+      </div>
+
     </div>
     <div>
       <img class="hero-img" src="https://pbs.twimg.com/media/GwPwpq8XcAA6vui?format=jpg&name=large" alt="Viteska kapak">
     </div>
   </section>
 
-  <!-- Özellikler: görsellere dayalı -->
+  <!-- Özellikler -->
   <section class="features">
     <article class="card">
       <img src="assets/feature-1.jpg" alt="Hızlı açılış">
@@ -134,7 +151,7 @@
     </article>
   </section>
 
-  <!-- Ekran Görüntüleri (Play’den eş zamanlı) -->
+  <!-- Ekran Görüntüleri -->
   <section class="screens">
     <h2>Ekran Görüntüleri</h2>
     <div id="ssGrid" class="grid-ss"></div>
@@ -184,14 +201,14 @@
   const PLAY_ID = "viteska.novaura";
   const PLAY_URL = `https://play.google.com/store/apps/details?id=${PLAY_ID}&hl=tr`;
   const APK_URL  = "https://ayazqaan.github.io/harita/viteska.apk"; // APK yolun
+  const WEB_URL  = "https://www.socialcreator.com/magaza2";         // Geniş web butonu hedefi
   const META_URL = "data/app_meta.json"; // Play senkron dosyası (opsiyonel)
 
   // Yıl
   document.getElementById("year").textContent = new Date().getFullYear();
 
   // Rozet linkleri
-  const playBadge = document.getElementById("playBadge");
-  playBadge.href = PLAY_URL;
+  document.getElementById("playBadge").href = PLAY_URL;
 
   // iOS Web App rozeti → PWA kurulum akışı
   let deferredPrompt = null;
@@ -204,8 +221,11 @@
     }
   });
 
-  // APK butonu (alt bölüm)
+  // APK butonu
   document.getElementById("apkBtn").href = APK_URL;
+
+  // Geniş web butonu
+  document.getElementById("webBtn").href = WEB_URL;
 
   // Platform notu
   const ua = navigator.userAgent.toLowerCase();
@@ -216,7 +236,7 @@
               : (isIOS ? "iOS algılandı. Safari’de ‘Ana Ekrana Ekle’ ile Web App olarak yükleyin."
                        : "Web uygulaması olarak da kullanabilirsiniz.");
 
-  // Play meta verileri (varsa) ile başlık/açıklama/ekran görüntüleri
+  // Play meta verileri (varsa)
   fetch(META_URL).then(r=>r.ok?r.json():null).then(meta=>{
     if(!meta) return;
     if(meta.title){
