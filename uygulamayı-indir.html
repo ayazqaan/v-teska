@@ -10,6 +10,21 @@
 <meta name="theme-color" content="#ffffff">
 
 <style>
+
+      * {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+button, .quick-box, .btn-menu, .menu-list a, .ad-row button {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+  outline: none !important;
+  box-shadow: none !important;
+  user-select: none;
+}
+
   :root{
     --primary:#f27405; --blue:#3483fa; --green:#24c257;
     --text:#121417; --muted:#6b7280; --line:#e5e7eb;
@@ -34,12 +49,30 @@
   .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
   .hero-img{width:100%;height:auto;border-radius:16px;border:1px solid var(--line);background:#fff;display:block}
 
-  /* store badges (yan yana) */
-  .store-badges{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:14px}
-  .store-badges a{display:inline-block;line-height:0;border:1px solid var(--line);border-radius:12px;padding:6px 10px;background:#fff;transition:transform .06s ease}
-  .store-badges a:active{transform:translateY(1px)}
-  .store-badges img{height:56px;width:auto;display:block}
-  @media (max-width:520px){ .store-badges img{height:48px} }
+  /* store badges → hep yan yana */
+  .store-badges{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:12px;
+    align-items:center;
+    margin-top:14px;
+  }
+  .store-badges a{
+    display:block;
+    line-height:0;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:6px 10px;
+    background:#fff;
+    transition:transform .06s ease;
+    width:100%;
+  }
+  .store-badges a:active{ transform:translateY(1px); }
+  .store-badges img{
+    width:100%;
+    height:auto;
+    display:block;
+  }
 
   /* geniş web butonu */
   .wide-cta{margin-top:10px}
@@ -197,20 +230,15 @@
 </div>
 
 <script>
-  // ——— Yapılandırma ———
   const PLAY_ID = "viteska.novaura";
   const PLAY_URL = `https://play.google.com/store/apps/details?id=${PLAY_ID}&hl=tr`;
-  const APK_URL  = "https://ayazqaan.github.io/harita/viteska.apk"; // APK yolun
-  const WEB_URL  = "https://www.socialcreator.com/magaza2";         // Geniş web butonu hedefi
-  const META_URL = "data/app_meta.json"; // Play senkron dosyası (opsiyonel)
+  const APK_URL  = "https://ayazqaan.github.io/harita/viteska.apk";
+  const WEB_URL  = "https://www.socialcreator.com/magaza2";
+  const META_URL = "data/app_meta.json";
 
-  // Yıl
   document.getElementById("year").textContent = new Date().getFullYear();
-
-  // Rozet linkleri
   document.getElementById("playBadge").href = PLAY_URL;
 
-  // iOS Web App rozeti → PWA kurulum akışı
   let deferredPrompt = null;
   window.addEventListener("beforeinstallprompt",(e)=>{ e.preventDefault(); deferredPrompt=e; });
   document.getElementById("pwaBadge").addEventListener("click",(e)=>{
@@ -221,13 +249,9 @@
     }
   });
 
-  // APK butonu
   document.getElementById("apkBtn").href = APK_URL;
-
-  // Geniş web butonu
   document.getElementById("webBtn").href = WEB_URL;
 
-  // Platform notu
   const ua = navigator.userAgent.toLowerCase();
   const isAndroid = ua.includes("android");
   const isIOS = /iphone|ipad|ipod/.test(ua);
@@ -236,7 +260,6 @@
               : (isIOS ? "iOS algılandı. Safari’de ‘Ana Ekrana Ekle’ ile Web App olarak yükleyin."
                        : "Web uygulaması olarak da kullanabilirsiniz.");
 
-  // Play meta verileri (varsa)
   fetch(META_URL).then(r=>r.ok?r.json():null).then(meta=>{
     if(!meta) return;
     if(meta.title){
@@ -260,7 +283,7 @@
     if(meta.updatedOn){
       document.getElementById("updateInfo").textContent = "Google Play güncelleme tarihi: " + meta.updatedOn;
     }
-  }).catch(()=>{ /* meta yoksa sessizce geç */ });
+  }).catch(()=>{});
 </script>
 </body>
 </html>
