@@ -10,26 +10,10 @@
 <meta name="theme-color" content="#ffffff">
 
 <style>
+  /* dokunma parlamasını kapat */
+  *{box-sizing:border-box;-webkit-tap-highlight-color:rgba(0,0,0,0)!important;outline:none!important}
+  :root{ --primary:#f27405; --blue:#3483fa; --green:#24c257; --text:#121417; --muted:#6b7280; --line:#e5e7eb; }
 
-      * {
-  -webkit-tap-highlight-color: transparent !important;
-  -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-button, .quick-box, .btn-menu, .menu-list a, .ad-row button {
-  -webkit-tap-highlight-color: transparent !important;
-  -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
-  outline: none !important;
-  box-shadow: none !important;
-  user-select: none;
-}
-
-  :root{
-    --primary:#f27405; --blue:#3483fa; --green:#24c257;
-    --text:#121417; --muted:#6b7280; --line:#e5e7eb;
-  }
-  *{box-sizing:border-box}
   html,body{margin:0}
   body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#fff;color:var(--text)}
   .wrap{max-width:1120px;margin:0 auto;padding:24px 16px 64px}
@@ -46,13 +30,12 @@ button, .quick-box, .btn-menu, .menu-list a, .ad-row button {
   .h-title{font-size:34px;line-height:1.12;margin:10px 0 6px}
   .h-title .hl{color:var(--primary)}
   .muted{color:var(--muted)}
-  .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
   .hero-img{width:100%;height:auto;border-radius:16px;border:1px solid var(--line);background:#fff;display:block}
 
   /* store badges → hep yan yana */
   .store-badges{
     display:grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:1fr 1fr;
     gap:12px;
     align-items:center;
     margin-top:14px;
@@ -67,27 +50,18 @@ button, .quick-box, .btn-menu, .menu-list a, .ad-row button {
     transition:transform .06s ease;
     width:100%;
   }
-  .store-badges a:active{ transform:translateY(1px); }
-  .store-badges img{
-    width:100%;
-    height:auto;
-    display:block;
-  }
+  .store-badges a:active{transform:translateY(1px)}
+  .store-badges img{width:100%;height:auto;display:block}
 
   /* geniş web butonu */
   .wide-cta{margin-top:10px}
   .wide-cta a{
-    display:block; width:100%;
-    background:#fff; color:var(--primary);
-    border:2px solid var(--primary);
-    border-radius:14px;
-    padding:14px 20px;
-    text-align:center; font-weight:800; font-size:18px;
-    box-shadow:0 2px 8px rgba(242,116,5,.08);
-    transition:transform .06s ease, box-shadow .12s ease;
-    text-decoration:none;
+    display:block;width:100%;background:#fff;color:var(--primary);
+    border:2px solid var(--primary);border-radius:14px;padding:14px 20px;
+    text-align:center;font-weight:800;font-size:18px;box-shadow:0 2px 8px rgba(242,116,5,.08);
+    transition:transform .06s ease, box-shadow .12s ease;text-decoration:none
   }
-  .wide-cta a:active{ transform:translateY(1px); box-shadow:0 1px 5px rgba(242,116,5,.12); }
+  .wide-cta a:active{transform:translateY(1px);box-shadow:0 1px 5px rgba(242,116,5,.12)}
 
   /* screenshot gallery */
   .screens{margin-top:34px}
@@ -103,18 +77,29 @@ button, .quick-box, .btn-menu, .menu-list a, .ad-row button {
   .steps{margin:8px 0 0 18px}
   .steps li{margin:6px 0}
 
-  /* features */
-  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
-  .card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
-  .card img{width:100%;height:180px;object-fit:cover;display:block}
+  /* FEATURES — PC: 4 sütun | Mobil: 2 sütun */
+  .features{
+    display:grid;
+    grid-template-columns:repeat(4,1fr); /* varsayılan: masaüstü 4 */
+    gap:16px;
+    margin-top:28px;
+  }
+  @media (max-width:980px){
+    .hero{grid-template-columns:1fr}
+    .info{grid-template-columns:1fr}
+    .grid-ss{grid-template-columns:1fr 1fr}
+    .features{grid-template-columns:repeat(2,1fr)} /* mobil & tablet: 2 */
+  }
+
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+  .card img{width:100%;height:160px;object-fit:cover;display:block}
   .card .inner{padding:14px}
-  .tag{display:inline-block;font-weight:700;border-radius:999px;padding:6px 10px;border:1px solid var(--line);color:#111;background:#fff;margin-bottom:8px}
+  .tag{display:inline-block;font-weight:700;border-radius:999px;padding:6px 10px;border:1px solid var(--line);background:#fff;margin-bottom:8px;color:#111}
+  .card h3{margin:4px 0 6px}
+  .card p{margin:0;color:var(--muted)}
 
   /* footer */
   .footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);color:#6b7280;font-size:13px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
-
-  @media (max-width:980px){ .hero{grid-template-columns:1fr} .features{grid-template-columns:1fr 1fr} .info{grid-template-columns:1fr} }
-  @media (max-width:640px){ .features{grid-template-columns:1fr} .grid-ss{grid-template-columns:1fr 1fr} }
 </style>
 </head>
 <body>
@@ -131,7 +116,7 @@ button, .quick-box, .btn-menu, .menu-list a, .ad-row button {
   <!-- Hero -->
   <section class="hero">
     <div>
-      <h1 class="h-title" id="heroTitle">Araç Dünyası<span class="hl"> Viteska</span> ile Seninle</h1>
+      <h1 class="h-title" id="heroTitle">Araç Dünyası <span class="hl">Viteska</span> ile Seninle</h1>
       <p class="muted" id="heroDesc">
         Viteska, araç sahiplerinin tüm ihtiyaçlarını tek çatı altında toplayan kapsamlı bir platformdur.
         Bakım takibi, masraf yönetimi, sigorta hatırlatmaları ve ilan sistemi gibi özellikleriyle aracınızı yönetmeyi kolaylaştırır, size zaman kazandırır.
@@ -139,50 +124,106 @@ button, .quick-box, .btn-menu, .menu-list a, .ad-row button {
 
       <div class="store-badges" id="badgesRow">
         <a id="playBadge" href="#" target="_blank" rel="noopener" aria-label="Google Play'den indir">
-          <img src="https://cihanbuyukakkas.com/wp-content/uploads/2021/04/Google-Play-hemen-indir-button-logo-icon-transparan-PNG-gorseli_3.png" alt="">
+          <img src="https://cihanbuyukakkas.com/wp-content/uploads/2021/04/Google-Play-hemen-indir-button-logo-icon-transparan-PNG-gorseli_3.png" alt="Google Play">
         </a>
         <a id="pwaBadge" href="#" aria-label="iOS Web App olarak yükle">
-          <img src="https://cihanbuyukakkas.com/wp-content/uploads/2021/04/App-Store-hemen-indir-button-logo-icon-transparan-PNG-gorseli_3.png" alt="">
+          <img src="https://cihanbuyukakkas.com/wp-content/uploads/2021/04/App-Store-hemen-indir-button-logo-icon-transparan-PNG-gorseli_3.png" alt="iOS Web App">
         </a>
       </div>
 
       <div class="wide-cta">
         <a id="webBtn" href="#" target="_blank" rel="noopener" aria-label="Viteska Web sürümünü aç">Web Sürümünü Aç</a>
       </div>
+</div>
 
-    </div>
     <div>
       <img class="hero-img" src="https://pbs.twimg.com/media/GwPwpq8XcAA6vui?format=jpg&name=large" alt="Viteska kapak">
     </div>
   </section>
 
-  <!-- Özellikler -->
-  <section class="features">
-    <article class="card">
-      <img src="assets/feature-1.jpg" alt="Hızlı açılış">
-      <div class="inner">
-        <span class="tag" style="border-color:#fce7d4;background:#fff5eb;color:#7a3a04">Hızlı Başlangıç</span>
-        <h3>Hafif ve hızlı</h3>
-        <p class="muted">Düşük veri kullanımı, anında açılış.</p>
-      </div>
-    </article>
-    <article class="card">
-      <img src="assets/feature-2.jpg" alt="Harita ve rota">
-      <div class="inner">
-        <span class="tag" style="border-color:#d8f5e5;background:#f3fff8;color:#0b5a2b">Rota ve Arama</span>
-        <h3>Harita ile yönlendirme</h3>
-        <p class="muted">Yol tarifi, süre ve tek tıkla arama.</p>
-      </div>
-    </article>
-    <article class="card">
-      <img src="assets/feature-3.jpg" alt="Web App">
-      <div class="inner">
-        <span class="tag" style="border-color:#dbe7ff;background:#f3f7ff;color:#0b3f9a">Web App Desteği</span>
-        <h3>iOS için Web App</h3>
-        <p class="muted">Safari’den Ana Ekrana Ekle ile tam ekran.</p>
-      </div>
-    </article>
-  </section>
+  <!-- Özellikler: 8 kart (PC 4 sütun, mobil 2 sütun) -->
+<section class="features">
+  <!-- 1) Bakım Takibi -->
+  <article class="card">
+    <img src="https://i.ibb.co/LZb9PvQ/bakim.jpg" alt="Bakım Takibi">
+    <div class="inner">
+      <span class="tag" style="border-color:#ffe4cc;background:#fff9f3;color:#7a3a04">Takip</span>
+      <h3>Bakım Takibi</h3>
+      <p>Aracın periyodik bakım kayıtlarını unutma, otomatik hatırlatmalar al.</p>
+    </div>
+  </article>
+
+  <!-- 2) Masraflarım -->
+  <article class="card">
+    <img src="https://i.ibb.co/4j5jtDJ/masraf.jpg" alt="Masraflarım">
+    <div class="inner">
+      <span class="tag" style="border-color:#dbe7ff;background:#f3f7ff;color:#0b3f9a">Bütçe</span>
+      <h3>Masraflarım</h3>
+      <p>Yakıt, bakım, vergi gibi tüm harcamalarını kaydet ve analiz et.</p>
+    </div>
+  </article>
+
+  <!-- 3) Sigortalar -->
+  <article class="card">
+    <img src="https://i.ibb.co/4RfB9gz/sigorta.jpg" alt="Sigortalar">
+    <div class="inner">
+      <span class="tag" style="border-color:#fde2e2;background:#fff6f6;color:#7a0404">Güvence</span>
+      <h3>Kasko & Trafik Sigortası</h3>
+      <p>Sigorta poliçelerini tek yerde gör, hatırlatmalarla zamanı kaçırma.</p>
+    </div>
+  </article>
+
+  <!-- 4) Harita & Konum -->
+  <article class="card">
+    <img src="https://i.ibb.co/QJzHHcK/harita.jpg" alt="Haritalar">
+    <div class="inner">
+      <span class="tag" style="border-color:#d8f5e5;background:#f3fff8;color:#0b5a2b">Rota</span>
+      <h3>Harita & Konum</h3>
+      <p>Yakındaki servis, yakıt, yıkama ve park noktalarını haritada bul.</p>
+    </div>
+  </article>
+
+  <!-- 5) Ehliyet + Cezalar + İlk Yardım -->
+  <article class="card">
+    <img src="https://i.ibb.co/XjcBqW7/ehliyet.jpg" alt="Ehliyet ve Cezalar">
+    <div class="inner">
+      <span class="tag" style="border-color:#ffe7c2;background:#fff9ef;color:#7a3a04">Bilgi</span>
+      <h3>Ehliyet & Cezalar</h3>
+      <p>Trafik cezaları, ehliyet bilgileri ve ilk yardım önerileri tek yerde.</p>
+    </div>
+  </article>
+
+  <!-- 6) Vasıtalar -->
+  <article class="card">
+    <img src="https://pbs.twimg.com/media/G1hmwPFWkAApyAL?format=jpg&name=large" alt="Vasıtalar">
+    <div class="inner">
+      <span class="tag" style="border-color:#dbe7ff;background:#f3f7ff;color:#0b3f9a">Garaj</span>
+      <h3>Vasıtalar</h3>
+      <p>Kendi garajını oluştur, araçların hakkında bilgi sahibi ol.</p>
+    </div>
+  </article>
+
+  <!-- 7) Mağaza -->
+  <article class="card">
+    <img src="https://i.ibb.co/w7w3TR7/magaza.jpg" alt="Mağaza">
+    <div class="inner">
+      <span class="tag" style="border-color:#e6e6ff;background:#f7f7ff;color:#0b3f9a">Alışveriş</span>
+      <h3>Viteska Mağaza</h3>
+      <p>Aksesuar, yedek parça ve sürücü ürünlerini uygula içinden satın al.</p>
+    </div>
+  </article>
+
+  <!-- 8) Araç Bilgisi & Karşılaştırma -->
+  <article class="card">
+    <img src="https://pbs.twimg.com/media/G1hph1XXYAAz3eq?format=jpg&name=medium" alt="Araç Karşılaştırma">
+    <div class="inner">
+      <span class="tag" style="border-color:#d8f5e5;background:#f3fff8;color:#0b5a2b">Karşılaştır</span>
+      <h3>Araç Bilgisi & Karşılaştırma</h3>
+      <p>Tüm araçlar hakkında bilgi al, modelleri yan yana karşılaştır.</p>
+    </div>
+  </article>
+</section>
+
 
   <!-- Ekran Görüntüleri -->
   <section class="screens">
@@ -238,20 +279,19 @@ button, .quick-box, .btn-menu, .menu-list a, .ad-row button {
 
   document.getElementById("year").textContent = new Date().getFullYear();
   document.getElementById("playBadge").href = PLAY_URL;
+  document.getElementById("webBtn").href = WEB_URL;
+  document.getElementById("apkBtn").href = APK_URL;
 
+  // PWA prompt (Android)
   let deferredPrompt = null;
-  window.addEventListener("beforeinstallprompt",(e)=>{ e.preventDefault(); deferredPrompt=e; });
+  window.addEventListener("beforeinstallprompt",(e)=>{ e.preventDefault(); deferredPrompt = e; });
   document.getElementById("pwaBadge").addEventListener("click",(e)=>{
     e.preventDefault();
-    if(deferredPrompt){ deferredPrompt.prompt(); deferredPrompt=null; }
-    else {
-      alert("iOS’ta yüklemek için: Safari → Paylaş → Ana Ekrana Ekle.");
-    }
+    if(deferredPrompt){ deferredPrompt.prompt(); deferredPrompt = null; }
+    else { alert("iOS’ta yüklemek için: Safari → Paylaş → Ana Ekrana Ekle."); }
   });
 
-  document.getElementById("apkBtn").href = APK_URL;
-  document.getElementById("webBtn").href = WEB_URL;
-
+  // Platform notu
   const ua = navigator.userAgent.toLowerCase();
   const isAndroid = ua.includes("android");
   const isIOS = /iphone|ipad|ipod/.test(ua);
@@ -260,6 +300,7 @@ button, .quick-box, .btn-menu, .menu-list a, .ad-row button {
               : (isIOS ? "iOS algılandı. Safari’de ‘Ana Ekrana Ekle’ ile Web App olarak yükleyin."
                        : "Web uygulaması olarak da kullanabilirsiniz.");
 
+  // Play meta verileri (varsa)
   fetch(META_URL).then(r=>r.ok?r.json():null).then(meta=>{
     if(!meta) return;
     if(meta.title){
