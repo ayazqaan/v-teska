@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title id="pageTitle">Viteska – Uygulamayı İndir</title>
+<meta name="description" id="pageDesc" content="Viteska: Yakındaki oto hizmetlerini tek uygulamada. Android APK indir; iOS için Web App.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/logo.png">
+<meta name="theme-color" content="#ffffff">
+
+<style>
+  :root{
+    --primary:#f27405; --blue:#3483fa; --green:#24c257;
+    --text:#121417; --muted:#6b7280; --line:#e5e7eb;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#fff;color:var(--text)}
+  .wrap{max-width:1120px;margin:0 auto;padding:24px 16px 64px}
+
+  /* header */
+  .top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 0;border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img{width:36px;height:36px;border-radius:8px;object-fit:contain}
+  .brand b{font-size:20px;letter-spacing:.2px}
+  .ver{font-weight:700;color:#374151;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 12px}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;margin-top:22px}
+  .h-title{font-size:34px;line-height:1.12;margin:10px 0 6px}
+  .h-title .hl{color:var(--primary)}
+  .muted{color:var(--muted)}
+  .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+  .hero-img{width:100%;height:auto;border-radius:16px;border:1px solid var(--line);background:#fff;display:block}
+
+  /* store badges (yan yana) */
+  .store-badges{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:14px}
+  .store-badges a{display:inline-block;line-height:0;border:1px solid var(--line);border-radius:12px;padding:6px 10px;background:#fff;transition:transform .06s ease}
+  .store-badges a:active{transform:translateY(1px)}
+  .store-badges img{height:56px;width:auto;display:block}
+  @media (max-width:520px){ .store-badges img{height:48px} }
+
+  /* screenshot gallery */
+  .screens{margin-top:34px}
+  .screens h2{margin:0 0 12px}
+  .grid-ss{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .ss{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;aspect-ratio:9/19}
+  .ss img{width:100%;height:100%;object-fit:cover;display:block}
+
+  /* info blocks */
+  .info{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+  .box{border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff}
+  .box h3{margin:4px 0 6px}
+  .steps{margin:8px 0 0 18px}
+  .steps li{margin:6px 0}
+
+  /* features (görsel odaklı) */
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .card img{width:100%;height:180px;object-fit:cover;display:block}
+  .card .inner{padding:14px}
+  .tag{display:inline-block;font-weight:700;border-radius:999px;padding:6px 10px;border:1px solid var(--line);color:#111;background:#fff;margin-bottom:8px}
+
+  /* footer */
+  .footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);color:#6b7280;font-size:13px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+
+  @media (max-width:980px){ .hero{grid-template-columns:1fr} .features{grid-template-columns:1fr 1fr} .info{grid-template-columns:1fr} }
+  @media (max-width:640px){ .features{grid-template-columns:1fr} .grid-ss{grid-template-columns:1fr 1fr} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <!-- Header -->
+  <header class="top">
+    <div class="brand">
+      <img src="https://pbs.twimg.com/media/GtdpnsJWMAAicbp?format=jpg&name=medium" alt="Viteska Logo">
+      <b id="brandTitle">Viteska</b>
+    </div>
+    <div class="ver" id="versionBadge">Sürüm: v2.0.0</div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div>
+      <h1 class="h-title" id="heroTitle">Araç Dünyası<span class="hl"> Viteska</span> ile Seninle</h1>
+      <p class="muted" id="heroDesc">
+        Viteska, araç sahiplerinin tüm ihtiyaçlarını tek çatı altında toplayan kapsamlı bir platformdur.
+        Bakım takibi, masraf yönetimi, sigorta hatırlatmaları ve ilan sistemi gibi özellikleriyle aracınızı yönetmeyi kolaylaştırır, size zaman kazandırır.
+      </p>
+
+      <!-- ✅ Görsel rozetler (yan yana) -->
+      <div class="store-badges" id="badgesRow">
+        <a id="playBadge" href="#" target="_blank" rel="noopener" aria-label="Google Play'den indir">
+          <img src="https://cihanbuyukakkas.com/wp-content/uploads/2021/04/Google-Play-hemen-indir-button-logo-icon-transparan-PNG-gorseli_5.png" alt="Google Play'den indir">
+        </a>
+        <a id="pwaBadge" href="#" aria-label="iOS Web App olarak yükle">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTCBypzSyTbXc7ZQJY-z5pX0jWk6C6OEW5Ew&s" alt="iOS Web App - Ana Ekrana Ekle">
+        </a>
+      </div>
+
+      <p class="muted" id="platformNote" style="margin-top:6px"></p>
+    </div>
+    <div>
+      <img class="hero-img" src="https://pbs.twimg.com/media/GwPwpq8XcAA6vui?format=jpg&name=large" alt="Viteska kapak">
+    </div>
+  </section>
+
+  <!-- Özellikler: görsellere dayalı -->
+  <section class="features">
+    <article class="card">
+      <img src="assets/feature-1.jpg" alt="Hızlı açılış">
+      <div class="inner">
+        <span class="tag" style="border-color:#fce7d4;background:#fff5eb;color:#7a3a04">Hızlı Başlangıç</span>
+        <h3>Hafif ve hızlı</h3>
+        <p class="muted">Düşük veri kullanımı, anında açılış.</p>
+      </div>
+    </article>
+    <article class="card">
+      <img src="assets/feature-2.jpg" alt="Harita ve rota">
+      <div class="inner">
+        <span class="tag" style="border-color:#d8f5e5;background:#f3fff8;color:#0b5a2b">Rota ve Arama</span>
+        <h3>Harita ile yönlendirme</h3>
+        <p class="muted">Yol tarifi, süre ve tek tıkla arama.</p>
+      </div>
+    </article>
+    <article class="card">
+      <img src="assets/feature-3.jpg" alt="Web App">
+      <div class="inner">
+        <span class="tag" style="border-color:#dbe7ff;background:#f3f7ff;color:#0b3f9a">Web App Desteği</span>
+        <h3>iOS için Web App</h3>
+        <p class="muted">Safari’den Ana Ekrana Ekle ile tam ekran.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- Ekran Görüntüleri (Play’den eş zamanlı) -->
+  <section class="screens">
+    <h2>Ekran Görüntüleri</h2>
+    <div id="ssGrid" class="grid-ss"></div>
+    <p class="muted" id="updateInfo" style="margin-top:8px;"></p>
+  </section>
+
+  <!-- Yükleme Bilgileri -->
+  <section class="info">
+    <div class="box">
+      <h3>Android yükleme</h3>
+      <ol class="steps">
+        <li>APK dosyasını indirin ve açın.</li>
+        <li>Gerekirse Ayarlar → Güvenlik → “Bilinmeyen kaynaklar” iznini etkinleştirin.</li>
+        <li>Kurulum tamamlandıktan sonra Viteska’yı açın.</li>
+      </ol>
+      <div class="row" style="margin-top:12px">
+        <a id="apkBtn" class="btn btn-outline" href="#" download>APK indir</a>
+      </div>
+    </div>
+    <div class="box">
+      <h3>iOS’ta Web Uygulaması</h3>
+      <ol class="steps">
+        <li>Safari ile bu sayfayı açın.</li>
+        <li>Paylaş menüsünden “Ana Ekrana Ekle”yi seçin.</li>
+        <li>İsmi “Viteska” olarak kaydedin.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Sürüm Notları -->
+  <section class="box" style="margin-top:28px">
+    <h3>Öne Çıkanlar</h3>
+    <div class="muted" id="highlights">
+      Otopark, Lastikçi, Yıkama, Akaryakıt, Servis, Bayiler — harita & rota & arama.
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div>© <span id="year"></span> Viteska</div>
+    <div class="muted">Gizlilik • Kullanım Koşulları</div>
+  </footer>
+</div>
+
+<script>
+  // ——— Yapılandırma ———
+  const PLAY_ID = "viteska.novaura";
+  const PLAY_URL = `https://play.google.com/store/apps/details?id=${PLAY_ID}&hl=tr`;
+  const APK_URL  = "https://ayazqaan.github.io/harita/viteska.apk"; // APK yolun
+  const META_URL = "data/app_meta.json"; // Play senkron dosyası (opsiyonel)
+
+  // Yıl
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Rozet linkleri
+  const playBadge = document.getElementById("playBadge");
+  playBadge.href = PLAY_URL;
+
+  // iOS Web App rozeti → PWA kurulum akışı
+  let deferredPrompt = null;
+  window.addEventListener("beforeinstallprompt",(e)=>{ e.preventDefault(); deferredPrompt=e; });
+  document.getElementById("pwaBadge").addEventListener("click",(e)=>{
+    e.preventDefault();
+    if(deferredPrompt){ deferredPrompt.prompt(); deferredPrompt=null; }
+    else {
+      alert("iOS’ta yüklemek için: Safari → Paylaş → Ana Ekrana Ekle.");
+    }
+  });
+
+  // APK butonu (alt bölüm)
+  document.getElementById("apkBtn").href = APK_URL;
+
+  // Platform notu
+  const ua = navigator.userAgent.toLowerCase();
+  const isAndroid = ua.includes("android");
+  const isIOS = /iphone|ipad|ipod/.test(ua);
+  document.getElementById("platformNote").textContent =
+    isAndroid ? "Android algılandı. Google Play’den indirebilir veya APK’yı kurabilirsiniz."
+              : (isIOS ? "iOS algılandı. Safari’de ‘Ana Ekrana Ekle’ ile Web App olarak yükleyin."
+                       : "Web uygulaması olarak da kullanabilirsiniz.");
+
+  // Play meta verileri (varsa) ile başlık/açıklama/ekran görüntüleri
+  fetch(META_URL).then(r=>r.ok?r.json():null).then(meta=>{
+    if(!meta) return;
+    if(meta.title){
+      document.getElementById("pageTitle").textContent = meta.title + " – İndir";
+      document.getElementById("brandTitle").textContent = meta.title;
+    }
+    if(meta.shortDesc){
+      document.getElementById("pageDesc").setAttribute("content", meta.shortDesc);
+      document.getElementById("heroDesc").textContent = meta.shortDesc;
+    }
+    if(meta.versionName){
+      document.getElementById("versionBadge").textContent = "Sürüm: " + meta.versionName;
+    }
+    const ssGrid = document.getElementById("ssGrid");
+    ssGrid.innerHTML = "";
+    (meta.screenshots || []).slice(0,6).forEach(p=>{
+      const d = document.createElement("div"); d.className = "ss";
+      d.innerHTML = `<img src="${p}" alt="Ekran görüntüsü">`;
+      ssGrid.appendChild(d);
+    });
+    if(meta.updatedOn){
+      document.getElementById("updateInfo").textContent = "Google Play güncelleme tarihi: " + meta.updatedOn;
+    }
+  }).catch(()=>{ /* meta yoksa sessizce geç */ });
+</script>
+</body>
+</html>
